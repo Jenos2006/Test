@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RStudio Future</title>
+    <style>
+        /* Import cool futuristic font */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px red, -2px -2px black; }
+            50% { text-shadow: -2px -2px red, 2px 2px black; }
+            100% { text-shadow: 2px 2px red, -2px -2px black; }
+        }
+
+        @keyframes neonGlow {
+            0% { opacity: 0; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0; transform: scale(0.8); }
+        }
+
+        body {
+            font-family: "Orbitron", sans-serif;
+            color: red;
+            background: black;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            z-index: -2;
+        }
+
+        .container {
+            background: rgba(20, 20, 20, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 15px red;
+            text-align: center;
+            animation: glitch 2.5s infinite alternate; /* Slower animation */
+            z-index: 1; /* Ensure content is above logos */
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            animation: glitch 2.5s infinite alternate; /* Slower animation */
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* Futuristic 3D button */
+        .button {
+            background: linear-gradient(45deg, red, darkred);
+            border: none;
+            color: white;
+            padding: 15px 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 50px;
+            text-transform: uppercase;
+            transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out; /* Slower transition */
+            box-shadow: 0 0 15px red;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button:hover {
+            background: white;
+            color: red;
+            box-shadow: 0 0 25px red;
+            transform: scale(1.1);
+        }
+
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        #status {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* Style for logo instances */
+        .logo {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-image: url('https://cdn.discordapp.com/icons/1297643917885571165/498fdcaab7cd632968b23a30e7b92ac3.webp?size=2048');
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: neonGlow 6s infinite alternate; /* Slower animation */
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="background"></div>
+
+    <div class="container">
+        <h1>RStudio</h1>
+        <p>FREE ROBLOX CONDOS</p>
+        
+        <button id="okBtn" class="button">JOIN</button>
+        
+        <p id="status"></p>
+    </div>
+
+    <script>
+        document.getElementById("okBtn").addEventListener("click", function() {
+            document.getElementById("status").textContent = "Joining...";
+        });
+
+        // Create random logos with neon glow effect
+        function createLogos() {
+            const logos = []; // To track the positions of logos to prevent overlap
+            let attempt = 0;
+            let totalLogos = 50; // Increased the total logos to 50
+
+            while (logos.length < totalLogos && attempt < 1000) { // Try 1000 times to place logos
+                let logo = document.createElement("div");
+                logo.classList.add("logo");
+
+                // Random positions
+                let randomX = Math.random() * window.innerWidth;
+                let randomY = Math.random() * window.innerHeight;
+
+                // Check if the new logo overlaps with existing ones
+                let overlap = false;
+                for (let i = 0; i < logos.length; i++) {
+                    let existingLogo = logos[i];
+                    let distance = Math.sqrt(Math.pow(randomX - existingLogo.x, 2) + Math.pow(randomY - existingLogo.y, 2));
+                    if (distance < 200) { // Check if the logos are within 200px of each other
+                        overlap = true;
+                        break;
+                    }
+                }
+
+                // If no overlap, add the logo
+                if (!overlap) {
+                    logo.style.left = `${randomX}px`;
+                    logo.style.top = `${randomY}px`;
+                    logo.style.animationDelay = `${Math.random() * 6}s`;
+
+                    // Store the position of the logo
+                    logos.push({ x: randomX, y: randomY });
+
+                    // Add the logo to the body
+                    document.body.appendChild(logo);
+                }
+
+                attempt++;
+            }
+        }
+
+        // Call the function to generate logos when the page loads
+        createLogos();
+    </script>
+
+</body>
+</html>
