@@ -1,0 +1,462 @@
+:: script/cmd by Jenos2006
+
+@echo off
+set idkLOLOLOLOLOLOLOLOLddukfdhbehnke=Moin wie geht es dir :)
+set cmdxversion=v1
+set infoname=system-info.txt
+set color=a
+
+:loadingscreen
+cls
+title DARK X CMD - LOADER
+echo.
+echo 			  ___  _  _  ____    _  _
+echo 			 / __)( \/ )(    \  ( \/ )
+timeout 1 >NUL
+echo 			( (__ / \/ \ ) D (   )  (
+timeout 1 >NUL
+echo 			 \___)\_)(_/(____/  (_/\_)
+timeout 2 >NUL
+goto startup
+
+:startup
+cls
+color %color%
+title CMD X - by Jenos2006
+echo   ___  _  _  ____    _  _
+echo  / __)( \/ )(    \  ( \/ )
+echo ( (__ / \/ \ ) D (   )  (
+echo  \___)\_)(_/(____/  (_/\_)
+echo        by Jenos2006
+echo.
+echo Hello %username%!
+echo CMD made by Jenos2006!
+echo !!!Please don't claim that this cmd is yours!!!
+echo Type cmds and have fun :)
+echo Version: %cmdxversion%
+echo.
+goto :cmd
+
+:cmd
+title CMD X - by Jenos2006
+echo.
+	set Input=
+	set /p command="--> "
+
+		if "%command%"=="cum" goto cum
+		if "%command%"=="exit" goto exit
+		if "%command%"=="reload" goto reload
+		if "%command%"=="dc" goto discord
+		if "%command%"=="cmds" goto cmds
+		if "%command%"=="help" goto help
+		if "%command%"=="log" goto log
+		if "%command%"=="logs" goto log
+		if "%command%"=="cum" goto cum
+		if "%command%"=="time" goto time
+		if "%command%"=="virus" goto virus
+		if "%command%"=="sysinfo" goto sysinfo
+		if "%command%"=="clear" goto startup
+		if "%command%"=="credits" goto credits
+		if "%command%"=="realgenders" goto gender
+		if "%command%"=="version" goto version
+		if "%command%"=="calculator" goto calculator
+		if "%command%"=="color" goto color
+		if "%command%"=="lock" goto lock
+		if "%command%"=="taskkill" goto taskkill
+		if "%command%"=="tasklist" goto tasklist
+		if "%command%"=="explorer" goto explorer
+		if "%command%"=="echo" goto echo
+		if "%command%"=="re" goto reload
+		if "%command%"=="start" goto startApp
+		if "%command%"=="create" goto createfile
+		if "%command%"=="del" goto delete
+		if "%command%"=="dcspammer" goto discord_webhook_spammer
+
+
+	echo Error! This command doesnt exist.
+goto cmd
+
+
+:cmds
+echo.
+echo.
+echo.
+echo --------Commands--------
+echo.
+echo main:
+echo cmds - shows all commands
+echo dc - invites you in my Discordserver
+echo realod/re - reloads the cmd
+echo exit - closes the cmd
+echo clear - clears the cmd
+echo credits - shows the CMD X credits
+echo verion - Shows the CMD-Version and Windows-Version
+echo log/logs - shows your command log
+echo time - shows the time of your PC
+echo sysinfo - shows system-infos(in a .txt file)
+echo calculator - calculator
+echo color - recolor the CMD
+echo lock - locks your pc(lock screen)
+echo tasklist - shows all active processes
+echo taskkill - kills a active processes
+echo create - creats a file
+echo start - starts any program
+echo dcspammer - spams any discord webhook
+echo.
+echo fun:
+echo cum - idk man...
+echo virus - DANGER!!!
+echo realgenders - shows the only real genders
+echo echo - a echo
+echo.
+goto cmd
+
+
+:reload
+start %~nx0
+goto exit
+
+
+:tasklist
+echo Active processes:
+tasklist
+goto cmd
+
+
+:taskkill
+cls
+set /p procname="Enter the name of the process or PID you want to kill: "
+tasklist | find /i "%procname%" >nul
+if errorlevel 1 (
+    echo Process "%procname%" not found.
+) else (
+    taskkill /im "%procname%" /f >nul 2>&1
+    if errorlevel 1 (
+        echo Could not terminate process "%procname%".
+    ) else (
+        echo Process "%procname%" has ended.
+    )
+)
+echo.
+if "%procname%"=="explorer.exe" echo !!!Note: the command "explorer" will reload the explorer!!! & timeout 5 >NUL & goto startup
+timeout 2 >NUL
+goto startup
+
+
+:discord_webhook_spammer
+echo Service not avable.
+goto cmd
+
+
+:delete
+echo command doesnt exist right now sorry.
+goto cmd
+
+
+:startApp
+set /p filename="Enter the name filename (with extension, e.g., program.exe): "
+
+if "%filename%"=="" (
+    echo No file name entered.
+    goto :cmd
+)
+
+echo.
+echo --------------------------------------------------------
+echo Searching for %filename% across the entire computer...
+
+for /f "delims=" %%i in ('dir /s /b "C:\%filename%" 2^>nul') do (
+    set "found_file=%%i"
+    set "file_path=%%~dpi"
+    
+    echo File found!
+    
+    pushd "%file_path%"  > nul
+    start %found_file%
+    popd >nul
+    echo --------------------------------------------------------
+    goto cmd
+)
+echo File %filename% was not found.
+echo --------------------------------------------------------
+goto cmd
+
+:createfile
+setlocal
+set /p filename="Enter the name of the file (with extension, e.g., text.txt): "
+set /p content="Enter the content of the file: "
+echo %content% > %filename%
+echo The file "%filename%" has been created.
+endlocal
+goto cmd
+
+
+:explorer
+start explorer.exe
+goto cmd
+
+
+:echo
+set /p echo="ECHO: "
+echo You said: "%echo%"
+goto cmd
+
+
+:lock
+rundll32.exe user32.dll,LockWorkStation
+goto cmd
+
+
+:calculator
+start calculator.vbs
+goto cmd
+
+
+:log
+doskey /history
+goto cmd
+
+
+:cum
+cls
+echo.
+echo.
+echo __________________________
+echo _________#######__________
+echo ________#___#___#_________
+echo _______#____#____#________
+echo _______#_________#________
+echo ________#########_________
+echo _________#######__________
+echo _________#_____#__________
+echo _________#_____#__________
+echo _________#_____#__________
+echo _________#_____#__________
+echo ______####_____####_______
+echo _____##___________##______
+echo _____#_____________#______
+echo _____##___________##______
+echo ______####_____####_______
+echo.
+echo Press any key to go back!
+pause >NUL
+goto startup
+
+
+:gender
+cls
+echo.
+echo THERE ARE ONLY THESE TWO GENDERS!
+echo.
+echo.
+echo.
+echo MALE
+echo.
+echo _______________________________##############_____
+echo _______________________________##############_____
+echo _______________________________##############_____
+echo ____________________________________#########_____
+echo ___________________________________##########_____
+echo __________________#######_________#####__####_____
+echo ______________###############___#####____####_____
+echo ___________#######_______##########______####_____
+echo __________#####_____________######________________
+echo ________#####_________________#####_______________
+echo _______#####____________________####______________
+echo _______####______________________###______________
+echo ______####_______________________####_____________
+echo ______####________________________###_____________
+echo ______####________________________###_____________
+echo ______####________________________###_____________
+echo _______###_______________________####_____________
+echo _______####_____________________####______________
+echo ________####___________________####_______________
+echo _________#####________________####________________
+echo __________######___________######_________________
+echo ____________######_______######___________________
+echo _______________#############______________________
+echo __________________#######_________________________
+echo.
+echo.
+echo.
+echo.
+echo.
+echo FEMALE
+echo.
+echo _______________________###________________________
+echo ___________________###########____________________
+echo ________________#################_________________
+echo ______________######_________#######______________
+echo ____________#####_______________#####_____________
+echo ___________#####__________________####____________
+echo ___________####____________________####___________
+echo __________####______________________####__________
+echo __________###_______________________####__________
+echo __________###_______________________####__________
+echo __________###_______________________####__________
+echo __________####______________________####__________
+echo ___________###_____________________####___________
+echo ___________#####__________________####____________
+echo ____________######______________#####_____________
+echo ______________######__________######______________
+echo ________________##################________________
+echo ___________________############___________________
+echo _______________________###________________________
+echo _______________________###________________________
+echo _______________________###________________________
+echo _______________###################________________
+echo _______________###################________________
+echo _______________###################________________
+echo _______________________###________________________
+echo _______________________###________________________
+echo _______________________###________________________
+echo _______________________###________________________
+echo.
+echo Press any key to go back!
+pause >NUL
+goto startup
+
+
+:time
+start time.exe
+goto cmd
+
+
+:virus
+cls
+title Virus-Sartup
+echo This script made by Jenos2006.
+echo Are you sure to execute this command?(y/n/yes/no)
+
+	set Input=
+	set /p virus="--> "
+		if "%virus%"=="y" start virus.exe & goto exit
+		if "%virus%"=="n" goto startup
+		if "%virus%"=="yes" start virus.exe & goto exit
+		if "%virus%"=="no" goto startup
+echo.
+echo Error
+timeout 3 >NUL
+goto virus
+
+
+:sysinfo
+echo.
+echo --------------------------------------------
+echo PLEASE WAIT! IT MAY TAKE A WHILE!
+if exist %~dp0%dateiname% del %infoname% & echo (The old file was deleted.) >NUL
+echo.
+echo   ___  _  _  ____    _  _ >%infoname%
+echo  / __)( \/ )(    \  ( \/ )>>%infoname%
+echo ( (__ / \/ \ ) D (   )  ( >>%infoname%
+echo  \___)\_)(_/(____/  (_/\_)>>%infoname%
+echo. >>%infoname%
+ECHO This script made by Jenos2006! >>%infoname%
+ECHO Discord: https://discord.gg/yCr38TeQ7z >>%infoname%
+ECHO.>>%infoname%
+ECHO.>>%infoname%
+ECHO.>>%infoname%
+ECHO.>>%infoname%
+ECHO.>>%infoname%
+ECHO.>>%infoname%
+ECHO.>>%infoname%
+ECHO.>>%infoname%
+title PROCESS: 10%
+nslookup myip.opendns.com resolver1.opendns.com>>%infoname%
+ver>>%infoname%
+title PROCESS: 20%
+ECHO.>>%infoname%
+ECHO Username:%username%>>%infoname%
+title PROCESS: 30%
+ECHO.>>%infoname%
+ECHO Time: %time%>>%infoname%
+title PROCESS: 40%
+ECHO.>>%infoname%
+ECHO Date: %date%>>%infoname%
+title PROCESS: 50%
+ECHO.>>%infoname%
+netsh wlan show profiles>>%infoname%
+title PROCESS: 60%
+ECHO.>>%infoname%
+ipconfig>>%infoname%
+title PROCESS: 70%
+ECHO.>>%infoname%
+ECHO Additional Information:>>%infoname%
+ipconfig | find /i "IPv4">>%infoname%
+title PROCESS: 80%
+wmic diskdrive get size>>%infoname%
+wmic cpu get name>>%infoname%
+title PROCESS: 90%
+ECHO.>>%infoname%
+ECHO.>>%infoname%
+ECHO.>>%infoname%
+systeminfo>>%infoname%
+title PROCESS: 100% (finishing)
+timeout 1 >NUL
+echo.
+echo !!!If you re-execute the command, the previous file will be deleted!!!
+echo --------------------------------------------
+start %infoname%
+goto cmd
+
+
+:color
+cls
+echo Enter your color (z.B. 0-9, A-F):
+set /p color=
+
+if "%color%"=="" (
+    echo Please enter a valid color code.
+    goto cmd
+)
+
+color %color%
+goto startup
+
+
+:help
+echo.
+echo.
+echo.
+echo Type cmds to lookup the commands!
+echo FOR MORE HELP JOIN THE DC-SERVER(command: dc)
+goto cmd
+
+:discord
+start https://discord.gg/yCr38TeQ7z
+goto cmd
+
+
+:version
+echo.
+echo CMD X version: %cmdxversion%
+echo.
+echo.
+echo PC version:
+ver
+goto cmd
+
+
+
+:credits
+cls
+echo.
+echo   ___  _  _  ____    _  _
+echo  / __)( \/ )(    \  ( \/ )
+echo ( (__ / \/ \ ) D (   )  (
+echo  \___)\_)(_/(____/  (_/\_)
+echo.
+title Jenos2006 - credits
+echo This script/cmd was maded by Jenos2006!
+echo !!!Please don't claim that this cmd is yours!!!
+echo.
+echo.
+echo Discord: https://discord.gg/yCr38TeQ7z
+echo.
+
+goto cmd
+
+
+:exit
+exit
+:: the end LOL
